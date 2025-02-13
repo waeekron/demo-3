@@ -103,7 +103,7 @@ func pipeV2(filters []any, initialData []any) (output any) {
 				wantedArgs[i] = reflect.Zero(funcType.In(i))
 			}
 
-			// check that previous function's output can be used as new input, panic if next function's parameter list doesn't match with last function's return value
+			// check that initialData can be used as next one's input, panic if next function's parameter list doesn't match with last function's return values
 			for k, val := range initialData {
 				if reflect.TypeOf(wantedArgs[k]) != reflect.TypeOf(val) {
 					panic("Piping error piip-puup")
@@ -121,7 +121,7 @@ func pipeV2(filters []any, initialData []any) (output any) {
 			for j := 0; j < numIn; j++ {
 				wantedArgs[j] = reflect.Zero(funcType.In(j))
 			}
-			// check that previous function's output can be used as new input, panic if next function's parameter list doesn't match with last function's return value
+			// check that previous function's output can be used as next one's input, panic if next function's parameter list doesn't match with last function's return values
 			for k, val := range results {
 				if reflect.TypeOf(wantedArgs[k]) != reflect.TypeOf(val) {
 					panic("Piping error piip-puup")
@@ -130,7 +130,7 @@ func pipeV2(filters []any, initialData []any) (output any) {
 
 			}
 		}
-		// call function with the variables as arguments
+		// call next function with checked argument list
 		returnValue := reflect.ValueOf(f).Call(results)
 		results = append(results, returnValue...)
 		output = results
