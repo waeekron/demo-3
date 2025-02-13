@@ -131,7 +131,7 @@ func pipeV2(filters []any, initialData []any) (output any) {
 			}
 		}
 		// call next function with checked argument list
-		returnValue := reflect.ValueOf(f).Call(results)
+		returnValue := reflect.ValueOf(f).Call(wantedArgs)
 		results = append(results, returnValue...)
 		output = results
 	}
