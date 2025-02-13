@@ -6,7 +6,6 @@ import (
 	"os"
 	"strconv"
 	"strings"
-	"sync"
 )
 
 func sum(values ...float64) float64 {
@@ -78,12 +77,9 @@ type operation struct {
 }
 
 func main() {
-	var wg sync.WaitGroup
 	inputCh := make(chan operation)
 	resultCh := make(chan float64)
-	wg.Add(1)
 	go func() {
-		// defer wg.Done()
 		nums, op := readNumbersAndOperation()
 		inputCh <- operation{nums, op}
 		close(inputCh)
