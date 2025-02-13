@@ -102,10 +102,12 @@ type calculatorData struct {
 
 func main() {
 	var data calculatorData
+	// pipe filters together:)
 	pipe(
 		data,
 		readNumbers,
 		readOperation,
 		computeAndPrint,
 	)
+
 }
