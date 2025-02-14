@@ -13,3 +13,10 @@ käytetty tukiälyä mukavan paljon:)
   - panikoi, jos funktiot eivät yhdisty oikein
 
 Toteutuksen järkevyyteen en osaa ottaa kantaa, mutta näinkin voi näköjään tehdä:))
+
+
+### implisiittinen-kutsu
+- kaksi goroutinea, kaksi kanavaa
+- ensimmäin goroutine lukee syötettä, kirjoittaa sen kanavalle, jonka jälkeen se sulkee kanavan
+- toinen goroutine kuuntelee kanavaa, laskee laskun, jonka jälkeen se sulkee kanavan
+  
